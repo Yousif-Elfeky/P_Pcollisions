@@ -16,7 +16,7 @@ void ActionInitialization::Build() const {
     SetUserAction(runAction);
 
     auto* primaryGenerator = new PrimaryGenrator();
-    primaryGenerator->SetParticleEnergy(13 * TeV); // Set energy to 20 GeV
+    primaryGenerator->SetParticleEnergy(10 * GeV); // Set energy to 20 GeV
     SetUserAction(primaryGenerator);
 
     // auto *steppingAction = new SteppingAction(); //stepping action is only neaded for debuging and partilce ID, run it at you ou

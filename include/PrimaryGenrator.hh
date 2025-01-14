@@ -26,6 +26,8 @@ private:
     const G4ThreeVector pos2 = G4ThreeVector(0., 0., 10. * cm);
     const G4ThreeVector mom1 = G4ThreeVector(0., 0., 1.);
     const G4ThreeVector mom2 = G4ThreeVector(0., 0., -1.);
+    G4ParticleGun* protonGun1;
+    G4ParticleGun* protonGun2;
 };
 
 #endif //PRIMARYGENRATOR_HH

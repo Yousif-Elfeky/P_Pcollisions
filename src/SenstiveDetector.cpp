@@ -25,12 +25,12 @@ G4bool SensitiveDetector::ProcessHits(G4Step* aStep,G4TouchableHistory *ROhist) 
 
     if (energyDeposited > 0)
     {
-        fTotalEnergyDeposited += energyDeposited ;
+        fTotalEnergyDeposited += energyDeposited / GeV ;
     }
 
     return true;
 }
 
 void SensitiveDetector::EndOfEvent(G4HCofThisEvent *) {
-    G4cout << "Deposited energy: " << fTotalEnergyDeposited  << G4endl;
+    G4cout << "Deposited energy: " << fTotalEnergyDeposited << " GeV"  << G4endl;
 }

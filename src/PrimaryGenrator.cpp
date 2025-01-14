@@ -6,27 +6,25 @@
 #include <G4Event.hh>
 
 PrimaryGenrator::PrimaryGenrator() {
-    energy = 10 * GeV; //initial value, change in the ActionInitialization.cpp
+    protonGun1 = new G4ParticleGun();
+    protonGun2 = new G4ParticleGun();
+
+    G4ParticleDefinition* proton = G4ParticleTable::GetParticleTable()->FindParticle("proton");
+    protonGun1->SetParticleDefinition(proton);
+    protonGun2->SetParticleDefinition(proton);
+
+    protonGun1->SetParticlePosition(pos1);
+    protonGun1->SetParticleMomentumDirection(mom1);
+    protonGun2->SetParticlePosition(pos2);
+    protonGun2->SetParticleMomentumDirection(mom2);
+
 }
 PrimaryGenrator::~PrimaryGenrator() {}
 
 void PrimaryGenrator::GeneratePrimaries(G4Event* anEvent) {
-    // Get the proton definition
-    G4ParticleDefinition* particle = G4ParticleTable::GetParticleTable()->FindParticle("proton");
 
-    // Proton 1
-    auto* vertex1 = new G4PrimaryVertex(pos1, 0. * ns); // Correct time offset
-    G4PrimaryParticle* primary1 = new G4PrimaryParticle(particle, mom1.x(), mom1.y(), mom1.z());
-    primary1->SetKineticEnergy(energy); // Set energy explicitly
-    vertex1->SetPrimary(primary1);
-    anEvent->AddPrimaryVertex(vertex1);
-
-    // Proton 2
-    auto* vertex2 = new G4PrimaryVertex(pos2, 0. * ns); // Correct time offset
-    G4PrimaryParticle* primary2 = new G4PrimaryParticle(particle, mom2.x(), mom2.y(), mom2.z());
-    primary2->SetKineticEnergy(energy); // Set energy explicitly
-    vertex2->SetPrimary(primary2);
-    anEvent->AddPrimaryVertex(vertex2);
+    protonGun1->GeneratePrimaryVertex(anEvent);
+    protonGun2->GeneratePrimaryVertex(anEvent);
 
     // Debug output (optional)
     // G4cout << "Generated proton 1 at " << pos1 << " with momentum " << mom1 << G4endl;
@@ -34,4 +32,6 @@ void PrimaryGenrator::GeneratePrimaries(G4Event* anEvent) {
 }
 void PrimaryGenrator::SetParticleEnergy(G4double energy) {
     this->energy = energy;
+    protonGun1->SetParticleEnergy(energy);
+    protonGun2->SetParticleEnergy(energy);
 }
