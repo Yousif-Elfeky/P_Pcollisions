@@ -1,4 +1,4 @@
-/run/numberOfThreads 1
+/run/numberOfThreads 12 #set the number of threads
 
 /run/initialize
 /vis/open
