@@ -14,7 +14,7 @@
 
 int main(int argc, char** argv) {
 
-// #ifdef G4MULTITHREADED
+// #ifdef G4MULTITHREADED //multithreading is currently not working, as it crashes the program
 //     auto *runManager = new G4MTRunManager; //multithreading check
 //     G4int numThreads = std::thread::hardware_concurrency();
 //     if (numThreads == 0) {
