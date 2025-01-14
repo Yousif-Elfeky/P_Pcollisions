@@ -14,16 +14,16 @@
 
 int main(int argc, char** argv) {
 
-// #ifdef G4MULTITHREADED //multithreading is currently not working, as it crashes the program
-//     auto *runManager = new G4MTRunManager; //multithreading check
-//     G4int numThreads = std::thread::hardware_concurrency();
-//     if (numThreads == 0) {
-//         numThreads = 4; // Fallback to a default value if detection fails
-//     }
-//     runManager->SetNumberOfThreads(numThreads);
-// #else
+#ifdef G4MULTITHREADED //multithreading check
+    auto *runManager = new G4MTRunManager;
+    G4int numThreads = std::thread::hardware_concurrency();
+    if (numThreads == 0) {
+        numThreads = 4; // Fallback to a default value if detection fails
+    }
+    runManager->SetNumberOfThreads(numThreads);
+#else
      G4RunManager *runManager = new G4RunManager;
-// #endif
+#endif
 
     //initializing the parts of the code
     runManager->SetUserInitialization(new PhysicsList());
