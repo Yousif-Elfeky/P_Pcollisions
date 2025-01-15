@@ -19,6 +19,12 @@ void EventAction::EndOfEventAction(const G4Event* event) {
     for (G4int i = 0; i < event->GetNumberOfPrimaryVertex(); i++) {
         G4PrimaryVertex* vertex = event->GetPrimaryVertex(i);
         numPrimaryParticles += vertex->GetNumberOfParticle();
+        for (G4int j = 0; j < vertex->GetNumberOfParticle(); j++) {
+            G4PrimaryParticle* particle = vertex->GetPrimary(j);
+            G4cout << "Primary: " << particle->GetParticleDefinition()->GetParticleName()
+                   << " E=" << particle->GetTotalEnergy() / CLHEP::GeV << " GeV" << G4endl;
+        }
+
     }
 
     // Count secondary particles
