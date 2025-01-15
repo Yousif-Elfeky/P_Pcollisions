@@ -26,7 +26,9 @@ add_executable(sim main.cpp ${sources}
         include/SensitveDetector.hh
         src/SenstiveDetector.cpp
         include/SteppingAction.hh
-        src/SteppingAction.cpp)
+        src/SteppingAction.cpp
+        include/EventAction.hh
+        src/EventAction.cpp)
 target_link_libraries(sim ${Geant4_LIBRARIES})
 add_custom_target(test DEPENDS sim)
 
