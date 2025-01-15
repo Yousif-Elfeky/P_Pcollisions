@@ -30,15 +30,34 @@ int main(int argc, char** argv) {
     runManager->SetUserInitialization(new DetectorConstruction());
     runManager->SetUserInitialization(new ActionInitialization());
 
-    G4UIExecutive *ui = new G4UIExecutive(argc, argv);
+
+    G4UIExecutive *ui = nullptr;
+
+    if (argc == 1)
+    {
+        ui = new G4UIExecutive(argc, argv);
+        RunAction::IsBatchMode = false;
+    }else {
+        RunAction::IsBatchMode = true; // Batch mode (arguments provided)
+    }
+
     G4VisManager *visManager = new G4VisExecutive();
 
     visManager->Initialize();
-    G4UImanager *UImanager = G4UImanager::GetUIpointer();
-    UImanager->ApplyCommand("/control/execute vis.mac");
-    ui->SessionStart();
 
-    delete runManager;
+    G4UImanager *UImanager = G4UImanager::GetUIpointer();
+    if(ui != nullptr)
+    {//checking for interactive session or batch session
+        UImanager->ApplyCommand("/control/execute vis.mac");
+        ui->SessionStart();
+        delete ui;
+    }
+    else
+    {
+        G4String command = "/control/execute ";
+        G4String fileName = argv[1];
+        UImanager->ApplyCommand(command + fileName);
+    }    delete runManager;
     delete ui;
     delete visManager;
 }
