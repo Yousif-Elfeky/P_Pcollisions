@@ -4,6 +4,8 @@
 
 #include "ActionInitialization.hh"
 
+#include "EventAction.hh"
+
 ActionInitialization::ActionInitialization() = default;
 ActionInitialization::~ActionInitialization() = default;
 
@@ -15,9 +17,12 @@ void ActionInitialization::Build() const {
     auto *runAction = new RunAction();
     SetUserAction(runAction);
 
-    auto* primaryGenerator = new PrimaryGenrator();
-    primaryGenerator->SetParticleEnergy(10 * GeV); // Set energy to 20 GeV
+    auto *primaryGenerator = new PrimaryGenrator();
     SetUserAction(primaryGenerator);
+
+    auto *eventAction = new EventAction();
+    SetUserAction(eventAction);
+
 
     // auto *steppingAction = new SteppingAction(); //stepping action is only neaded for debuging and partilce ID, run it at you ou
     // SetUserAction(steppingAction);

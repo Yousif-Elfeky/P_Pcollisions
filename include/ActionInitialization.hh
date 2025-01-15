@@ -11,7 +11,7 @@
 #include "DetectorConstruction.hh"
 #include "PrimaryGenrator.hh"
 #include "SteppingAction.hh"
-
+#include "EventAction.hh"
 class ActionInitialization : public G4VUserActionInitialization {
     public:
         ActionInitialization();
