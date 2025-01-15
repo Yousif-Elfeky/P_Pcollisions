@@ -13,6 +13,9 @@ PrimaryGenrator::PrimaryGenrator() {
     protonGun1->SetParticleDefinition(proton);
     protonGun2->SetParticleDefinition(proton);
 
+    SetParticleEnergy(13.0*TeV / 2.0 );
+    protonGun1->SetParticleEnergy(energy);
+    protonGun2->SetParticleEnergy(energy);
     protonGun1->SetParticlePosition(pos1);
     protonGun1->SetParticleMomentumDirection(mom1);
     protonGun2->SetParticlePosition(pos2);
@@ -32,6 +35,4 @@ void PrimaryGenrator::GeneratePrimaries(G4Event* anEvent) {
 }
 void PrimaryGenrator::SetParticleEnergy(G4double energy) {
     this->energy = energy;
-    protonGun1->SetParticleEnergy(energy);
-    protonGun2->SetParticleEnergy(energy);
 }
