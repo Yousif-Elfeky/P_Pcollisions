@@ -20,12 +20,12 @@ public:
     void SetParticleEnergy(G4double energy);
 
 private:
-    G4double energy = 100 * GeV; // Energy for both protons
+    G4double energy = 10 * GeV; // Energy for both protons
     // Constants for positions and momenta
-    const G4ThreeVector pos1 = G4ThreeVector(0., 0., -10. * cm);
-    const G4ThreeVector pos2 = G4ThreeVector(0., 0., 10. * cm);
-    const G4ThreeVector mom1 = G4ThreeVector(0., 0., 1.);
-    const G4ThreeVector mom2 = G4ThreeVector(0., 0., -1.);
+    const G4ThreeVector pos1 = G4ThreeVector(0., 0., -15. * m);
+    const G4ThreeVector pos2 = G4ThreeVector(0., 0., 15. * m);
+    const G4ThreeVector mom1 = G4ThreeVector(0., 0., 100.);
+    const G4ThreeVector mom2 = G4ThreeVector(0., 0., -100.);
     G4ParticleGun* protonGun1;
     G4ParticleGun* protonGun2;
 };
