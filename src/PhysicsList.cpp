@@ -8,7 +8,9 @@ PhysicsList::PhysicsList() {
     RegisterPhysics(new G4EmStandardPhysics);
     RegisterPhysics(new G4HadronPhysicsQGSP_BERT);
     RegisterPhysics(new G4HadronPhysicsFTFP_BERT());
-    RegisterPhysics(new G4DecayPhysics());
+    RegisterPhysics(new G4DecayPhysics());//Multithreading fix, required
+
+
 };
 PhysicsList::~PhysicsList() =default;
 

@@ -11,11 +11,11 @@
 #include "G4HadronPhysicsFTFP_BERT_HP.hh"
 
 
+
 class PhysicsList: public G4VModularPhysicsList {
   public:
     PhysicsList();
     ~PhysicsList() override;
-
 };
 
 #endif //PHYSICSLIST_CC_HH
