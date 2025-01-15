@@ -30,6 +30,8 @@ public:
     G4VPhysicalVolume* Construct() override;
 private:
     G4LogicalVolume *logicDetector{};
+    G4LogicalVolume *logicSilicon{};
+    G4LogicalVolume *logicLead{};
     void ConstructSDandField() override;
 };
 
