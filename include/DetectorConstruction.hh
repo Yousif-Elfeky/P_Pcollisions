@@ -19,6 +19,9 @@
 #include "G4Color.hh"
 #include "G4SDManager.hh"
 #include "SensitveDetector.hh"
+#include "G4Tubs.hh"
+#include "G4PhysicalConstants.hh"
+#include "G4SubtractionSolid.hh"
 
 class DetectorConstruction : public G4VUserDetectorConstruction {
 public:
