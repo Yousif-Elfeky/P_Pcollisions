@@ -3,6 +3,7 @@
 //
 #include "RunAction.hh"
 
+
 bool RunAction::IsBatchMode = false;
 
 
@@ -55,6 +56,7 @@ RunAction::RunAction() {
 RunAction::~RunAction() = default;
 
 void RunAction::BeginOfRunAction(const G4Run *run) {
+
 
     G4int runID = run->GetRunID();
     G4int threadID = G4Threading::G4GetThreadId();
