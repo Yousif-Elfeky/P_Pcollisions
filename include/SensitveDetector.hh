@@ -20,6 +20,8 @@ private:
     G4bool ProcessHits(G4Step *, G4TouchableHistory *) override;
     void Initialize(G4HCofThisEvent*) override;
     void EndOfEvent(G4HCofThisEvent *) override;
+
+    static G4int GetParticleTypeID(const G4String &particleName);
     G4double fTotalEnergyDeposited;
 };
 
