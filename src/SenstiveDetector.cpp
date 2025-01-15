@@ -24,6 +24,11 @@ G4bool SensitiveDetector::ProcessHits(G4Step* aStep,G4TouchableHistory *ROhist) 
     {
         fTotalEnergyDeposited += energyDeposited / GeV ;
     }
+
+    if (energyDeposited < 10.0 * MeV) {
+        return false;
+    }
+
     const G4ParticleDefinition* particle = aStep->GetTrack()->GetDefinition();
     G4String particleName = particle->GetParticleName();
     G4double E = aStep->GetTrack()->GetTotalEnergy();
@@ -36,7 +41,7 @@ G4bool SensitiveDetector::ProcessHits(G4Step* aStep,G4TouchableHistory *ROhist) 
 
     // Fill particle-level ntuple
     if (RunAction::IsBatchMode) {
-        analysisManager->FillNtupleIColumn(1, 0, GetParticleTypeID(particleName)); // Particle type
+        analysisManager->FillNtupleIColumn(1, 0, particle->GetParticleDefinitionID()); // Particle type
         analysisManager->FillNtupleDColumn(1, 1, E); // Energy
         analysisManager->FillNtupleDColumn(1, 2, momentum.x()); // px
         analysisManager->FillNtupleDColumn(1, 3, momentum.y()); // py
